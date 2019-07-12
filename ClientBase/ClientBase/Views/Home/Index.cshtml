@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Table of Clients";
+}
+
+<div style="width:auto; height:auto">
+    <h2 align="center">Список клиентов</h2>
+    <br />
+    @if (ViewBag.Persons != null)
+    {
+        <table class="table">
+            <tr>
+                <th><p>№ </p></th>
+                <th><p>Имя </p></th>
+                <th><p>Процедура </p></th>
+                <th><p>Дата </p></th>
+                <th><p>Время </p></th>
+                <th><p>Прибыль</p></th>
+                <th><p></p></th>
+            </tr>
+            @{ int id = 1;}
+            @foreach (var b in ViewBag.Persons)
+            {
+                <tr>
+                    <td><p>@id</p></td>
+                    <td><p>@b.Name</p></td>
+                    <td><p>@b.Procedure</p></td>
+                    <td><p>@b.Data.ToLongDateString()</p></td>
+                    <td><p>@b.Time.ToShortTimeString()</p></td>
+                    <td><p>@b.Profit</p></td>
+                    <td>
+                        <div style="width:250px;">
+                            <div style="float: left; width: 100px">
+                                <form action="/Home/Change/@b.Id">
+                                    <input type="submit" value="Изменить">
+                                </form>
+                            </div>
+                            <div style="float: right; width: 150px">
+                                <form action="/Home/Delete/@b.Id">
+                                    <input type="submit" value="Удалить">
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                id++;
+            }
+        </table>
+        <p>Общая прибыль: @ViewBag.Sum</p>
+        <div style="width:auto;">
+            <div style="float: left; width: 100px">
+                <form action="/Home/Add/">
+                    <input type="submit" value="Добавить запись">
+                </form>
+            </div>
+            <div style="float: right; width: 150px">
+                <form action="/Home/Clear/">
+                    <input type="submit" value="Очистить">
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            <h3>Пока нет записей</h3>
+            <br />
+            <form action="/Home/Add/">
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+    }
+</div>

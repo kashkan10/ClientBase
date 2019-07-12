@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Clear";
+}
+
+<h2>Хотите очистить базу?</h2>
+<br />
+<div style="width:150px;">
+    <div style="float: left; width: 50px">
+        <form action="/Home/ClearConf/" method="post">
+            <input style="width:50px" type="submit" value="Да">
+        </form>
+    </div>
+    <div style="float: right; width: 80px">
+        <form action="/Home/Index/">
+            <input type="submit" value="Отмена">
+        </form>
+    </div>
+</div>
+

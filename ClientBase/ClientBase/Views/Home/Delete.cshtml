@@ -1,0 +1,46 @@
+﻿@model ClientBase.Models.Person
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h2>Удаление записи</h2>
+<dl>
+    <dt>Имя</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>Процедура</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Procedure)
+    </dd>
+
+    <dt>Дата</dt>
+    <dd>
+        <p>@Model.Data.ToShortDateString()</p>
+    </dd>
+    <dt>Время</dt>
+    <dd>
+        <p>@Model.Time.ToShortTimeString()</p>
+    </dd>
+    <dd>
+        <div style="width:150px;">
+            <div style="float: left; width: 75px">
+                <form action="/Home/Delete/@Model.Id" method="post">
+                    <input type="submit" value="Удалить">
+                </form>
+            </div>
+            <div style="float: right; width: 75px">
+                <form action="/Home/Index/">
+                    <input type="submit" value="Отмена">
+                </form>
+            </div>
+        </div>
+    </dd>
+</dl>
+
+
+
+
+

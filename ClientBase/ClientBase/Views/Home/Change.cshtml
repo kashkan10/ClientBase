@@ -1,0 +1,29 @@
+﻿@model ClientBase.Models.Person
+@{
+    ViewBag.Title = "Change";
+}
+
+<h2>Изменение записи</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name, "Имя")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br /><br />
+    @Html.DropDownList("Procedure", new SelectList(new string[] { "Маникюр", "Педикюр" }, "Procedure"))
+    <br /><br />
+    @Html.LabelFor(model => model.Data, "Дата")
+    <br />
+    @Html.TextBox("Data", Model.Data.ToLongDateString())
+    <br /><br />
+    @Html.LabelFor(model => model.Time, "Время")
+    <br />
+    @Html.TextBox("Time", Model.Time.ToShortTimeString())
+    <br /><br />
+    @Html.LabelFor(model => model.Profit, "Прибыль")
+    <br />
+    @Html.EditorFor(model => model.Profit)
+    <br /><br />
+    <input type="submit" value="Сохранить" />
+}
